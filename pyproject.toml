@@ -46,3 +46,8 @@ where = ["."]
 [project.urls]
 Homepage = "https://hoxarix.com"
 Repository = "https://github.com/mohammadnataj/hoxarix-python"
+
+[tool.pytest.ini_options]
+markers = [
+    "integration: production runtime integration tests"
+]
