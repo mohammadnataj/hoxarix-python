@@ -5,7 +5,7 @@ from hoxarix import Client
 
 
 client = Client(
-    api_key="YOUR_API_KEY",
+    api_key="hooshix-dev-key",
     base_url="http://127.0.0.1:8000",
     timeout=30
 )
@@ -40,9 +40,9 @@ def send_request(index):
 
     return {
         "id": index,
-        "success": result["success"],
-        "memory": result["result"]["memory_count"],
-        "trace": len(result["result"]["trace"]),
+        "success": result["status"] == "completed",
+        "memory": result["memory"]["count"],
+        "trace": len(result["trace"]),
         "time": elapsed
     }
 

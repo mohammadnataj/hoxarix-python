@@ -4,7 +4,7 @@ from hoxarix import Client
 def test_runtime_call():
 
     client = Client(
-        api_key="YOUR_API_KEY",
+        api_key="hooshix-dev-key",
         base_url="http://127.0.0.1:8000"
     )
 
@@ -13,5 +13,7 @@ def test_runtime_call():
         input="Explain AI architecture"
     )
 
-    assert result["success"] is True
-    assert "result" in result
+    assert result["status"] == "completed"
+    assert result["error"] is None
+    assert "memory" in result
+    assert "trace" in result
