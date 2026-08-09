@@ -43,3 +43,6 @@ dependencies = [
 
 [tool.setuptools.packages.find]
 where = ["."]
+[project.urls]
+Homepage = "https://hoxarix.com"
+Repository = "https://github.com/mohammadnataj/hoxarix-python"
