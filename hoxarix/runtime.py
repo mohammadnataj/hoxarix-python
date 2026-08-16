@@ -72,4 +72,18 @@ class RuntimeClient:
             )
 
 
-        return response.json()
+        data = response.json()
+
+        return {
+            "success": data.get("status") == "completed",
+            "result": {
+                "output": data.get("output"),
+                "memory_count": data.get("memory", {}).get("count", 0),
+                "trace": data.get("trace", []),
+                "pipeline": data.get("pipeline", []),
+                "policy": data.get("policy", {}),
+                "state": data.get("state", {})
+            },
+            "request_id": data.get("request_id"),
+            "error": data.get("error")
+        }

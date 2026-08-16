@@ -8,7 +8,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "hoxarix"
-version = "0.1.2"
+version = "0.1.3"
 description = "Python SDK for Hoxarix AI Runtime Infrastructure"
 readme = "README.md"
 
@@ -43,6 +43,7 @@ dependencies = [
 
 [tool.setuptools.packages.find]
 where = ["."]
+include = ["hoxarix*"]
 [project.urls]
 Homepage = "https://hoxarix.com"
 Repository = "https://github.com/mohammadnataj/hoxarix-python"

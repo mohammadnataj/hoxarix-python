@@ -40,9 +40,9 @@ def send_request(index):
 
     return {
         "id": index,
-        "success": result["status"] == "completed",
-        "memory": result["memory"]["count"],
-        "trace": len(result["trace"]),
+        "success": result["success"],
+        "memory": result["result"]["memory_count"],
+        "trace": len(result["result"]["trace"]),
         "time": elapsed
     }
 

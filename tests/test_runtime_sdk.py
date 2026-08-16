@@ -13,7 +13,8 @@ def test_runtime_call():
         input="Explain AI architecture"
     )
 
-    assert result["status"] == "completed"
+    assert result["success"] is True
     assert result["error"] is None
-    assert "memory" in result
-    assert "trace" in result
+    assert "result" in result
+    assert "memory_count" in result["result"]
+    assert "trace" in result["result"]

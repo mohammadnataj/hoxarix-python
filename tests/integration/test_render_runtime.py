@@ -30,8 +30,9 @@ def test_render_runtime_call():
         input="Explain Hoxarix runtime architecture"
     )
 
-    assert result["status"] == "completed"
+    assert result["success"] is True
     assert result["error"] is None
     assert "request_id" in result
-    assert "trace" in result
-    assert "memory" in result
+    assert "result" in result
+    assert "trace" in result["result"]
+    assert "memory_count" in result["result"]
