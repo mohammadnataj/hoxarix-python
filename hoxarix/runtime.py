@@ -25,7 +25,7 @@ class RuntimeClient:
         self.headers = {
             "x-api-key": self.api_key,
             "Content-Type": "application/json",
-            "User-Agent": "hoxarix-python-sdk/0.1.2"
+            "User-Agent": "hoxarix-python-sdk/0.1.3"
         }
 
 
