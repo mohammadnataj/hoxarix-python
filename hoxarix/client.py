@@ -9,7 +9,7 @@ class Client:
     Main Hoxarix SDK Client
     """
 
-    SDK_VERSION = "0.1.3"
+    SDK_VERSION = "0.1.4"
 
     def __init__(
         self,
@@ -27,7 +27,7 @@ class Client:
             base_url
             or os.getenv(
                 "HOXARIX_BASE_URL",
-                "https://hoxarix-api.onrender.com"
+                "https://api.hoxarix.com"
             )
         )
 
