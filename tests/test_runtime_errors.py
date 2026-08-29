@@ -11,7 +11,7 @@ def test_invalid_api_key():
 
     client = Client(
         api_key="wrong-key",
-        base_url="http://127.0.0.1:8000"
+        base_url="https://api.hoxarix.com"
     )
 
     with pytest.raises(HoxarixAuthenticationError):
