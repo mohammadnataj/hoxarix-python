@@ -1,4 +1,10 @@
 # Changelog
+## 0.1.4 - Production endpoint default
+
+- Use https://api.hoxarix.com as the default Runtime API endpoint
+- Update SDK version metadata to 0.1.4
+- Preserve optional HOXARIX_BASE_URL override for custom deployments
+
 
 All notable changes to this project will be documented in this file.
 

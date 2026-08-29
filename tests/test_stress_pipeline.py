@@ -1,3 +1,7 @@
+import pytest
+
+pytestmark = pytest.mark.stress
+
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
