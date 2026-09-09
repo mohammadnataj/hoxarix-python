@@ -1,18 +1,59 @@
 # Hoxarix Python SDK
 
-Official Python SDK for **Hoxarix AI Runtime Infrastructure**.
+**Official Python SDK for Hoxarix — an AI Runtime Infrastructure and Control Layer.**
 
-Hoxarix provides an AI runtime control layer for building reliable AI agents with:
+Hoxarix sits between an AI application or agent and model execution, providing a runtime layer for **controlled, observable, and governed AI execution**.
 
-* Runtime execution
-* Policy enforcement
-* Governance controls
-* Explainability
-* Observability
-* Memory protection
-* Secure API access
+> Hoxarix is not a chatbot framework.
 
-## Current Release
+## 🧠 What is Hoxarix?
+
+Modern AI applications often send requests directly from an application or agent to an underlying model. Hoxarix introduces a runtime layer between those two sides so that requests can be evaluated and governed before execution.
+
+```text
+Application / Agent
+        ↓
+   Hoxarix Runtime
+        ↓
+Intent + Risk Analysis
+        ↓
+ Policy Enforcement
+  ALLOW / MODIFY / BLOCK
+        ↓
+ Memory / Runtime State
+        ↓
+ Model / LLM Execution
+        ↓
+ Trace / Explainability
+```
+
+Hoxarix is designed to provide runtime infrastructure for:
+
+- 🛡️ Policy enforcement and governance
+- 🔎 Intent and risk analysis
+- 🧠 Contextual memory and runtime state
+- 🔐 Controlled API access
+- 📋 Runtime trace and explainability
+- 📊 Observable AI execution
+
+The Python SDK is the simplest developer-facing way to connect a Python application or agent to the Hoxarix Runtime.
+
+## 🚀 Why use the Python SDK?
+
+Use the SDK when you want to put Hoxarix in the execution path of an application or agent without implementing the Runtime API integration yourself.
+
+The SDK handles the client-side connection to the Hoxarix Runtime and exposes a simple Python interface:
+
+```python
+result = client.runtime.run(
+    agent_id="assistant",
+    input="Explain AI governance in one sentence."
+)
+```
+
+The underlying Runtime evaluates the request and returns the normalized runtime response.
+
+## 📦 Current Release
 
 **Hoxarix Python SDK v0.1.4**
 
@@ -28,7 +69,7 @@ https://api.hoxarix.com
 
 For custom deployments, the base URL can be overridden with `HOXARIX_BASE_URL`.
 
-## Get Developer Access
+## 🔑 Get Developer Access
 
 To use the Hoxarix Runtime API, create a developer account at:
 
@@ -43,7 +84,7 @@ After signing in:
 
 Never commit your API key to Git or place it directly in public source code.
 
-## Installation
+## ⚡ Installation
 
 The official SDK is currently distributed through **GitHub Releases**.
 
@@ -63,7 +104,7 @@ You can also install the source distribution:
 pip install hoxarix-0.1.4.tar.gz
 ```
 
-## Authentication
+## 🔐 Authentication
 
 Set your API key as an environment variable.
 
@@ -91,7 +132,7 @@ client = Client(
 )
 ```
 
-## Quick Start
+## 🎯 Quick Start
 
 ```python
 import os
@@ -117,7 +158,7 @@ https://api.hoxarix.com
 
 by default, so no `HOXARIX_BASE_URL` setting is required for the public production service.
 
-## Runtime API
+## 🌐 Runtime API
 
 The SDK calls the Hoxarix Runtime Contract:
 
@@ -140,7 +181,43 @@ Example JSON request:
 }
 ```
 
-## REST / cURL
+A successful runtime response can include normalized execution and governance information such as:
+
+```text
+status
+intent
+risk_score
+confidence
+policy
+pipeline
+memory
+trace
+```
+
+Depending on the request and runtime policy, Hoxarix may allow, modify, or block execution.
+
+## 🛡️ Runtime Governance
+
+The SDK connects your application to a runtime that can evaluate requests before downstream model execution.
+
+Conceptually:
+
+```text
+Request
+  ↓
+Intent / Risk Analysis
+  ↓
+Policy Enforcement
+  ├── ALLOW
+  ├── MODIFY
+  └── BLOCK
+  ↓
+Runtime Execution
+```
+
+Hoxarix includes deterministic rule-based protections for recognized risky patterns. These controls are designed to prevent recognized requests from reaching downstream execution; they are not a claim of universal attack prevention.
+
+## 🌐 REST / cURL
 
 You can call the Runtime API directly without the Python SDK.
 
@@ -176,7 +253,7 @@ Invoke-RestMethod `
     -Body $body
 ```
 
-## Configuration
+## ⚙️ Configuration
 
 ### `HOXARIX_API_KEY`
 
@@ -204,30 +281,7 @@ When not provided, the SDK uses:
 https://api.hoxarix.com
 ```
 
-## Runtime Results
-
-A successful Runtime request returns the normalized Hoxarix runtime response.
-
-Depending on the request, the response can include runtime and policy information such as:
-
-```text
-success
-intent
-risk_score
-confidence
-policy
-pipeline
-```
-
-Example policy decision:
-
-```text
-ALLOW
-```
-
-Hoxarix can also block requests that violate runtime policy or governance controls.
-
-## Error Handling
+## 🚨 Error Handling
 
 The SDK provides typed exceptions including:
 
@@ -260,7 +314,7 @@ except HoxarixAuthenticationError:
     print("Authentication failed.")
 ```
 
-## Examples
+## 📚 Examples
 
 Example code is available in:
 
@@ -268,7 +322,24 @@ Example code is available in:
 examples/quickstart.py
 ```
 
-## Development
+## 🧩 Repository Role
+
+This repository is the **public Python developer interface** for Hoxarix.
+
+```text
+Hoxarix Core
+Private
+        ↓
+Hoxarix Website / Developer Console
+Private
+        ↓
+Hoxarix Python SDK
+Public
+```
+
+The implementation details of the Hoxarix Runtime and the Website remain in their respective private repositories. This repository focuses on helping developers integrate with Hoxarix.
+
+## 🛠️ Development
 
 Clone the repository:
 
@@ -285,18 +356,18 @@ pytest
 
 The repository separates standard CI tests from integration and stress tests that require a running Runtime service.
 
-## Version
+## 📌 Version
 
 ```text
 0.1.4
 ```
 
-## Author
+## 👤 Author
 
-**Mohammad Hasan Nataj Ansar**
+**Mohammad Hassan Nataj Ansar**
 
 Creator of Hoxarix AI Runtime Infrastructure.
 
-## License
+## 📄 License
 
 Apache License 2.0
